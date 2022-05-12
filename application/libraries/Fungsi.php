@@ -1,0 +1,26 @@
+<?php
+
+Class Fungsi {
+
+    protected $ci;
+
+    function __construct() {
+        $this->ci =& get_instance();
+    }
+
+    function user_login() {
+        $this->ci->load->model('user_m');
+        $user_id = $this->ci->session->userdata('userid');
+        $user_data = $this->ci->user_m->get($user_id)->row();
+        return $user_data;
+    }
+
+    function daftar_tamu() {
+        $this->ci->load->model('tamu_m');
+        $tamu_id = $this->ci->session->userdata('tamuid');
+        $tamu_data = $this->ci->tamu_m->get($tamu_id)->row();
+        return $tamu_data;
+    }
+
+
+}
